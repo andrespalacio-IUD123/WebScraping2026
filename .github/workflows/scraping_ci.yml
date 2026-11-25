@@ -1,0 +1,16 @@
+empaquetado-docker:
+   name: Construir Imagen de Docker (Producción)
+   needs: extraccion-y-calidad # Solo se ejecuta si el Job de pruebas aprueba
+   runs-on: ubuntu-latest
+
+  steps:
+     - name: Descargar código del repositorio
+       uses: actions/checkout@v4
+
+     - name: Construir imagen de Docker
+       run: |
+         docker build -t scraping-app:v1 .
+
+     - name: Probar ejecución del contenedor Docker
+       run: |
+         docker run --rm scraping-app:v1
