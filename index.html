@@ -26,7 +26,7 @@
                 <p class="mb-0 opacity-80">Análisis de Oferta e Inteligencia de Precios - Tiendas Branchos</p>
             </div>
             <div>
-                <span class="badge bg-light text-dark px-3 py-2 fs-6 rounded-pill shadow-sm">Actualización: Todos los Miércoles a las 7:00 PM (GMT)</span>
+                <span class="badge bg-light text-dark px-3 py-2 fs-6 rounded-pill shadow-sm">Actualización programada cada miércoles hasta Dic 9, 2026</span>
             </div>
         </div>
 
@@ -35,7 +35,7 @@
             <div class="col-md-4">
                 <div class="card p-4 text-center">
                     <h6 class="text-muted text-uppercase fw-semibold mb-2">Total Referencias</h6>
-                    <div class="kpi">12</div>
+                    <div class="kpi">1</div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -46,8 +46,8 @@
             </div>
             <div class="col-md-4">
                 <div class="card p-4 text-center">
-                    <h6 class="text-muted text-uppercase fw-semibold mb-2">Sincronización</h6>
-                    <div class="kpi fs-2 text-warning mt-2">GitHub Actions</div>
+                    <h6 class="text-muted text-uppercase fw-semibold mb-2">Fecha Límite Automática</h6>
+                    <div class="kpi fs-3 text-danger mt-2">9 de Dic, 2026</div>
                 </div>
             </div>
         </div>
@@ -65,12 +65,12 @@
             <div class="col-lg-5">
                 <div class="card p-4 h-100">
                     <h5 class="fw-bold mb-3">⚙️ Cronograma de Extracción</h5>
-                    <p class="text-secondary">Este tablero lee dinámicamente los datos estructurados en el repositorio remoto. El flujo corre de forma asíncrona:</p>
+                    <p class="text-secondary">Este tablero se actualiza automáticamente los miércoles a las 19:00 UTC (7:00 PM de Colombia). El ciclo finalizará automáticamente el 9 de diciembre de 2026.</p>
                     <div class="alert alert-success d-flex align-items-center mb-0" role="alert">
                         <div>
-                            <strong>Frecuencia:</strong> Semanal<br>
-                            <strong>Día:</strong> Miércoles<br>
-                            <strong>Hora:</strong> 7:00 PM (19:00 UTC)
+                            <strong>Frecuencia:</strong> Semanal (Miércoles)<br>
+                            <strong>Hora:</strong> 7:00 PM (19:00 UTC)<br>
+                            <strong>Límite:</strong> 9-Dic-2026
                         </div>
                     </div>
                 </div>
@@ -101,9 +101,9 @@
     </div>
 
     <script>
-        const marcasLabels = ["FILA", "SKECHERS", "ADIDAS"];
-        const marcasValores = [8, 3, 1];
-        const productos = [{"Referencia (SKU)": 163080, "Nombre/Marca": "[FILA] Fila Tenis Kerper Tr Hombre Gris", "Valor": "$199,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 163090, "Nombre/Marca": "[FILA] Fila Tenis Kerper Tr Hombre Negro", "Valor": "$199,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 160182, "Nombre/Marca": "[FILA] Fila Botas Trailstorm Hombre Azul", "Valor": "$239,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 160251, "Nombre/Marca": "[FILA] Fila Botas Trailstorm Hombre Verde", "Valor": "$239,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157370, "Nombre/Marca": "[FILA] Fila Tenis Discord Hombre Cafe", "Valor": "$155,400.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 156961, "Nombre/Marca": "[SKECHERS] Skechers Tenis Ridge Oak Hombre Negro", "Valor": "$231,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157361, "Nombre/Marca": "[FILA] Fila Tenis Discord Hombre Gris", "Valor": "$155,400.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 160151, "Nombre/Marca": "[FILA] Fila Botas Trailstorm Hombre Negro", "Valor": "$239,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 136979, "Nombre/Marca": "[ADIDAS] Adidas Tenis Terrex Tracefinder 2 Hombre Negro", "Valor": "$279,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157076, "Nombre/Marca": "[SKECHERS] Skechers Tenis Ridge Oak Hombre Azul", "Valor": "$231,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 156935, "Nombre/Marca": "[SKECHERS] Skechers Tenis Ridge Oak Hombre Verde", "Valor": "$231,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157352, "Nombre/Marca": "[FILA] Fila Tenis Discord Hombre Negro", "Valor": "$155,400.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}];
+        const marcasLabels = ["Branchos"];
+        const marcasValores = [1];
+        const productos = [{"Referencia (SKU)": "DUMMY123", "Nombre/Marca": "[Branchos] Calzado Outdoor Prueba", "Valor": "$299,900.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre"}];
 
         // Renderizado del Gráfico de BI con Chart.js
         const ctx = document.getElementById('chartMarcas').getContext('2d');
@@ -125,13 +125,13 @@
                 plugins: {
                     legend: { display: false }
                 },
-                scales: {
-                    y: { beginAtZero: true }
+                scales: { 
+                    y: { beginAtZero: true } 
                 }
             }
         });
 
-        // Inyección y Filtrado Dinámico de Productos en la Tabla de Datos
+        // Inyección y Filtrado Dinámico de Productos en la Tabla
         const tabla = document.getElementById('tablaProductos');
         const buscador = document.getElementById('buscador');
 
@@ -139,10 +139,10 @@
             tabla.innerHTML = '';
             lista.forEach(prod => {
                 const fila = `<tr>
-                    <td><span class="badge bg-secondary">${prod['Referencia (SKU)']}</span></td>
-                    <td class="fw-semibold">${prod['Nombre/Marca']}</td>
-                    <td><span class="badge bg-success fs-6">${prod['Valor'] || 'No Disponible'}</span></td>
-                    <td><small class="text-muted">${prod['Características']}</small></td>
+                    <td><span class="badge bg-secondary">\${prod['Referencia (SKU)']}</span></td>
+                    <td class="fw-semibold">\${prod['Nombre/Marca']}</td>
+                    <td><span class="badge bg-success fs-6">\${prod['Valor'] || 'No Disponible'}</span></td>
+                    <td><small class="text-muted">\${prod['Características']}</small></td>
                 </tr>`;
                 tabla.innerHTML += fila;
             });

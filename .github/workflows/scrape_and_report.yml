@@ -13,6 +13,16 @@ jobs:
     - name: Copiar repositorio
       uses: actions/checkout@v3
 
+    - name: Validar Fecha Límite (Hasta el 9 de Diciembre de 2026)
+      run: |
+        HOY=$(date +%Y-%m-%d)
+        LIMITE="2026-12-09"
+        if [ "$HOY" \> "$LIMITE" ]; then
+          echo "⚠️ La programación temporal ha expirado el 9 de Diciembre de 2026. Deteniendo flujo."
+          exit 1
+        fi
+        echo "✓ Dentro del rango de validez. Continuando ejecución."
+
     - name: Configurar Python
       uses: actions/setup-python@v4
       with:
