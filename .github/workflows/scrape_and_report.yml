@@ -2,7 +2,7 @@ name: Scraping y BI Automatizado Semanal
 
 on:
   schedule:
-    # Se ejecuta todos los miércoles a las 19:00 UTC
+    # Se ejecuta todos los miércoles a las 19:00 UTC (7:00 PM Colombia)
     - cron: '0 19 * * 3'
   workflow_dispatch:
 

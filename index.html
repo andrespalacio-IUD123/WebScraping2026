@@ -4,70 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tablero de BI - Tiendas Branchos</title>
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Chart.js para Visualización Analítica -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body { background-color: #f4f6f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .card { border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .kpi { font-size: 2.5rem; font-weight: bold; color: #0d6efd; }
-        .header-panel { background: linear-gradient(135deg, #0d6efd, #0b5ed7); color: white; padding: 25px; border-radius: 12px; margin-bottom: 30px; }
+        body { background-color: #f3f4f7; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .card { border: none; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 24px; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); }
+        .kpi { font-size: 2.8rem; font-weight: 800; color: #0d6efd; line-height: 1.2; }
+        .header-panel { background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 30px; border-radius: 16px; margin-bottom: 30px; box-shadow: 0 6px 20px rgba(30, 60, 114, 0.15); }
+        .search-box { border-radius: 20px; padding: 10px 20px; border: 1px solid #ced4da; }
     </style>
 </head>
 <body>
-    <div class="container py-4">
-        <div class="header-panel d-flex justify-content-between align-items-center">
+    <div class="container py-5">
+        <!-- Panel de Cabecera -->
+        <div class="header-panel d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
             <div>
-                <h1 class="mb-1">Dashboard de Inteligencia de Negocios</h1>
-                <p class="mb-0">Extracción y Control de Precios - Calzado Outdoor</p>
+                <h1 class="mb-1 fw-bold">📊 Dashboard BI Inteligente</h1>
+                <p class="mb-0 opacity-80">Análisis de Oferta e Inteligencia de Precios - Tiendas Branchos</p>
             </div>
-            <span class="badge bg-light text-dark fs-6">Actualizado Semanalmente (Miércoles)</span>
+            <div>
+                <span class="badge bg-light text-dark px-3 py-2 fs-6 rounded-pill shadow-sm">Actualización: Todos los Miércoles a las 7:00 PM (GMT)</span>
+            </div>
         </div>
 
+        <!-- Tarjetas de Métricas Clave (KPIs) -->
         <div class="row">
             <div class="col-md-4">
-                <div class="card text-center p-4">
-                    <h5 class="text-muted">Total Productos</h5>
+                <div class="card p-4 text-center">
+                    <h6 class="text-muted text-uppercase fw-semibold mb-2">Total Referencias</h6>
                     <div class="kpi">12</div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card text-center p-4">
-                    <h5 class="text-muted">Categoría Principal</h5>
-                    <div class="kpi fs-2 text-success">Calzado Outdoor</div>
+                <div class="card p-4 text-center">
+                    <h6 class="text-muted text-uppercase fw-semibold mb-2">Categoría Principal</h6>
+                    <div class="kpi fs-2 text-success mt-2">Calzado Outdoor</div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card text-center p-4">
-                    <h5 class="text-muted">Plataforma Origen</h5>
-                    <div class="kpi fs-2 text-warning">Branchos</div>
+                <div class="card p-4 text-center">
+                    <h6 class="text-muted text-uppercase fw-semibold mb-2">Sincronización</h6>
+                    <div class="kpi fs-2 text-warning mt-2">GitHub Actions</div>
                 </div>
             </div>
         </div>
 
+        <!-- Área de Analítica Gráfica -->
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-lg-7">
                 <div class="card p-4">
-                    <h5 class="card-title mb-3">Distribución de Productos por Marca</h5>
-                    <canvas id="chartMarcas" height="200"></canvas>
+                    <h5 class="fw-bold mb-3">Distribución de Stock y Catálogo por Marca</h5>
+                    <div style="position: relative; height: 260px;">
+                        <canvas id="chartMarcas"></canvas>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card p-4">
-                    <h5 class="card-title mb-3">Automatización</h5>
-                    <div class="alert alert-info">El proceso se ejecuta en la nube de GitHub Actions cada miércoles a las 7:00 PM de forma automatizada.</div>
+            <div class="col-lg-5">
+                <div class="card p-4 h-100">
+                    <h5 class="fw-bold mb-3">⚙️ Cronograma de Extracción</h5>
+                    <p class="text-secondary">Este tablero lee dinámicamente los datos estructurados en el repositorio remoto. El flujo corre de forma asíncrona:</p>
+                    <div class="alert alert-success d-flex align-items-center mb-0" role="alert">
+                        <div>
+                            <strong>Frecuencia:</strong> Semanal<br>
+                            <strong>Día:</strong> Miércoles<br>
+                            <strong>Hora:</strong> 7:00 PM (19:00 UTC)
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- Tabla de Datos Integrada -->
         <div class="card p-4">
-            <h5 class="card-title mb-3">Explorador de Datos Estructurados</h5>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-3">
+                <h5 class="fw-bold mb-0">Explorador Detallado de Productos</h5>
+                <input type="text" id="buscador" class="form-control search-box w-100 w-md-50" placeholder="🔍 Buscar por marca o modelo...">
+            </div>
             <div class="table-responsive">
                 <table class="table table-hover align-middle">
-                    <thead class="table-dark">
+                    <thead class="table-primary">
                         <tr>
-                            <th>Referencia SKU</th>
+                            <th>Referencia (SKU)</th>
                             <th>Nombre y Marca</th>
-                            <th>Precio</th>
+                            <th>Precio de Venta</th>
                             <th>Características</th>
                         </tr>
                     </thead>
@@ -83,33 +105,60 @@
         const marcasValores = [8, 3, 1];
         const productos = [{"Referencia (SKU)": 163080, "Nombre/Marca": "[FILA] Fila Tenis Kerper Tr Hombre Gris", "Valor": "$199,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 163090, "Nombre/Marca": "[FILA] Fila Tenis Kerper Tr Hombre Negro", "Valor": "$199,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 160182, "Nombre/Marca": "[FILA] Fila Botas Trailstorm Hombre Azul", "Valor": "$239,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 160251, "Nombre/Marca": "[FILA] Fila Botas Trailstorm Hombre Verde", "Valor": "$239,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157370, "Nombre/Marca": "[FILA] Fila Tenis Discord Hombre Cafe", "Valor": "$155,400.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 156961, "Nombre/Marca": "[SKECHERS] Skechers Tenis Ridge Oak Hombre Negro", "Valor": "$231,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157361, "Nombre/Marca": "[FILA] Fila Tenis Discord Hombre Gris", "Valor": "$155,400.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 160151, "Nombre/Marca": "[FILA] Fila Botas Trailstorm Hombre Negro", "Valor": "$239,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 136979, "Nombre/Marca": "[ADIDAS] Adidas Tenis Terrex Tracefinder 2 Hombre Negro", "Valor": "$279,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157076, "Nombre/Marca": "[SKECHERS] Skechers Tenis Ridge Oak Hombre Azul", "Valor": "$231,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 156935, "Nombre/Marca": "[SKECHERS] Skechers Tenis Ridge Oak Hombre Verde", "Valor": "$231,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157352, "Nombre/Marca": "[FILA] Fila Tenis Discord Hombre Negro", "Valor": "$155,400.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}];
 
+        // Renderizado del Gráfico de BI con Chart.js
         const ctx = document.getElementById('chartMarcas').getContext('2d');
         new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: marcasLabels,
-                datasets: [[
-                    label: 'Cantidad de Productos',
+                datasets: [{
+                    label: 'Productos',
                     data: marcasValores,
-                    backgroundColor: '#0d6efd',
-                    borderRadius: 6
-                ]]
+                    backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#dc3545', '#6c757d'],
+                    borderRadius: 8,
+                    borderWidth: 0
+                }]
             },
             options: {
                 responsive: true,
-                plugins: { legend: { display: false } }
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
             }
         });
 
+        // Inyección y Filtrado Dinámico de Productos en la Tabla de Datos
         const tabla = document.getElementById('tablaProductos');
-        productos.forEach(prod => {
-            const fila = `<tr>
-                <td><code>${prod['Referencia (SKU)']}</code></td>
-                <td>${prod['Nombre/Marca']}</td>
-                <td><span class="badge bg-success">${prod['Valor'] || 'No Disponible'}</span></td>
-                <td>${prod['Características']}</td>
-            </tr>`;
-            tabla.innerHTML += fila;
+        const buscador = document.getElementById('buscador');
+
+        function renderizarTabla(lista) {
+            tabla.innerHTML = '';
+            lista.forEach(prod => {
+                const fila = `<tr>
+                    <td><span class="badge bg-secondary">${prod['Referencia (SKU)']}</span></td>
+                    <td class="fw-semibold">${prod['Nombre/Marca']}</td>
+                    <td><span class="badge bg-success fs-6">${prod['Valor'] || 'No Disponible'}</span></td>
+                    <td><small class="text-muted">${prod['Características']}</small></td>
+                </tr>`;
+                tabla.innerHTML += fila;
+            });
+        }
+
+        // Inicial
+        renderizarTabla(productos);
+
+        // Evento de búsqueda
+        buscador.addEventListener('input', (e) => {
+            const termino = e.target.value.toLowerCase();
+            const filtrados = productos.filter(p => 
+                p['Nombre/Marca'].toLowerCase().includes(termino) || 
+                String(p['Referencia (SKU)']).toLowerCase().includes(termino)
+            );
+            renderizarTabla(filtrados);
         });
     </script>
 </body>
