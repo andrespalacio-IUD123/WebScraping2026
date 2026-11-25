@@ -35,7 +35,7 @@
             <div class="col-md-4">
                 <div class="card p-4 text-center">
                     <h6 class="text-muted text-uppercase fw-semibold mb-2">Total Referencias</h6>
-                    <div class="kpi">1</div>
+                    <div class="kpi">12</div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -101,9 +101,9 @@
     </div>
 
     <script>
-        const marcasLabels = ["Branchos"];
-        const marcasValores = [1];
-        const productos = [{"Referencia (SKU)": "DUMMY123", "Nombre/Marca": "[Branchos] Calzado Outdoor Prueba", "Valor": "$299,900.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre"}];
+        const marcasLabels = ["FILA", "SKECHERS", "ADIDAS"];
+        const marcasValores = [8, 3, 1];
+        const productos = [{"Referencia (SKU)": 163080, "Nombre/Marca": "[FILA] Fila Tenis Kerper Tr Hombre Gris", "Valor": "$199,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 163090, "Nombre/Marca": "[FILA] Fila Tenis Kerper Tr Hombre Negro", "Valor": "$199,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 160182, "Nombre/Marca": "[FILA] Fila Botas Trailstorm Hombre Azul", "Valor": "$239,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 160251, "Nombre/Marca": "[FILA] Fila Botas Trailstorm Hombre Verde", "Valor": "$239,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157370, "Nombre/Marca": "[FILA] Fila Tenis Discord Hombre Cafe", "Valor": "$155,400.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 156961, "Nombre/Marca": "[SKECHERS] Skechers Tenis Ridge Oak Hombre Negro", "Valor": "$231,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157361, "Nombre/Marca": "[FILA] Fila Tenis Discord Hombre Gris", "Valor": "$155,400.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 160151, "Nombre/Marca": "[FILA] Fila Botas Trailstorm Hombre Negro", "Valor": "$239,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 136979, "Nombre/Marca": "[ADIDAS] Adidas Tenis Terrex Tracefinder 2 Hombre Negro", "Valor": "$279,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157076, "Nombre/Marca": "[SKECHERS] Skechers Tenis Ridge Oak Hombre Azul", "Valor": "$231,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 156935, "Nombre/Marca": "[SKECHERS] Skechers Tenis Ridge Oak Hombre Verde", "Valor": "$231,200.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}, {"Referencia (SKU)": 157352, "Nombre/Marca": "[FILA] Fila Tenis Discord Hombre Negro", "Valor": "$155,400.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre (P\u00e1g 1)"}];
 
         // Renderizado del Gráfico de BI con Chart.js
         const ctx = document.getElementById('chartMarcas').getContext('2d');
@@ -125,8 +125,8 @@
                 plugins: {
                     legend: { display: false }
                 },
-                scales: { 
-                    y: { beginAtZero: true } 
+                scales: {
+                    y: { beginAtZero: true }
                 }
             }
         });
@@ -154,8 +154,8 @@
         // Evento de búsqueda
         buscador.addEventListener('input', (e) => {
             const termino = e.target.value.toLowerCase();
-            const filtrados = productos.filter(p => 
-                p['Nombre/Marca'].toLowerCase().includes(termino) || 
+            const filtrados = productos.filter(p =>
+                p['Nombre/Marca'].toLowerCase().includes(termino) ||
                 String(p['Referencia (SKU)']).toLowerCase().includes(termino)
             );
             renderizarTabla(filtrados);
