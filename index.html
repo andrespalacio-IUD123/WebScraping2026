@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero de BI - Tiendas Branchos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { background-color: #f4f6f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .card { border: none; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .kpi { font-size: 2.5rem; font-weight: bold; color: #0d6efd; }
+        .header-panel { background: linear-gradient(135deg, #0d6efd, #0b5ed7); color: white; padding: 25px; border-radius: 12px; margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <div class="header-panel d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="mb-1">Dashboard de Inteligencia de Negocios</h1>
+                <p class="mb-0">Extracción y Control de Precios - Calzado Outdoor</p>
+            </div>
+            <span class="badge bg-light text-dark fs-6">Actualizado Semanalmente (Miércoles)</span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <h5 class="text-muted">Total Productos</h5>
+                    <div class="kpi">1</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <h5 class="text-muted">Categoría Principal</h5>
+                    <div class="kpi fs-2 text-success">Calzado Outdoor</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center p-4">
+                    <h5 class="text-muted">Plataforma Origen</h5>
+                    <div class="kpi fs-2 text-warning">Branchos</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <h5 class="card-title mb-3">Distribución de Productos por Marca</h5>
+                    <canvas id="chartMarcas" height="200"></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <h5 class="card-title mb-3">Automatización</h5>
+                    <div class="alert alert-info">El proceso se ejecuta en la nube de GitHub Actions cada miércoles a las 7:00 PM de forma automatizada.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card p-4">
+            <h5 class="card-title mb-3">Explorador de Datos Estructurados</h5>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Referencia SKU</th>
+                            <th>Nombre y Marca</th>
+                            <th>Precio</th>
+                            <th>Características</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaProductos">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const marcasLabels = ["Branchos"];
+        const marcasValores = [1];
+        const productos = [{"Referencia (SKU)": "DUMMY123", "Nombre/Marca": "[Branchos] Calzado Outdoor Prueba", "Valor": "$299,900.00", "Caracter\u00edsticas": "Calzado Outdoor, Deportivo, Hombre"}];
+
+        const ctx = document.getElementById('chartMarcas').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: marcasLabels,
+                datasets: [[
+                    label: 'Cantidad de Productos',
+                    data: marcasValores,
+                    backgroundColor: '#0d6efd',
+                    borderRadius: 6
+                ]]
+            },
+            options: {
+                responsive: true,
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        const tabla = document.getElementById('tablaProductos');
+        productos.forEach(prod => {
+            const fila = `<tr>
+                <td><code>${prod['Referencia (SKU)']}</code></td>
+                <td>${prod['Nombre/Marca']}</td>
+                <td><span class="badge bg-success">${prod['Valor'] || 'No Disponible'}</span></td>
+                <td>${prod['Características']}</td>
+            </tr>`;
+            tabla.innerHTML += fila;
+        });
+    </script>
+</body>
+</html>
